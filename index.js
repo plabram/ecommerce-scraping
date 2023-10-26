@@ -8,7 +8,7 @@ const Data = mongoose.model("Data", new mongoose.Schema({
 
 const connect = async () => {
   try {
-    const URI = "mongodb+srv://freyalabram:zuHTZLPDChlaNcua@testcluster.tsihvlo.mongodb.net/amazon?retryWrites=true&w=majority"
+    const URI = process.env.MONGOURL
 await mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true})
 console.log("connected to db")  
 }
@@ -55,6 +55,6 @@ console.error(`Failed to save ${dataSchema.title} to database`)
 
   await browser.close()
   console.log(`All saved successfully`)
-  
+
 }
 scrapeProducts()
